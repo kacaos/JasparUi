@@ -1,0 +1,11 @@
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui/">	
+	<Script file="raidbuffreminder.lua"/>
+	<Script file="threatbar.lua"/>
+	<Script file="altpower.lua"/>
+	<Script file="align.lua"/>
+	<Script file="ilvlr.lua"/>
+	<Script file="mail.lua"/>
+	<Script file="reputationbar.lua"/>
+	<Script file="xpbar.lua"/>
+	<Script file="click2cast.lua"/>
+</Ui>

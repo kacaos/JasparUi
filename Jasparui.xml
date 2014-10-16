@@ -1,0 +1,19 @@
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui/">
+	<Script file="core\init.lua"/>
+	<Script file="core\install.lua"/>
+	<Script file="locales\locales.lua"/>
+	<Script file="config\config.lua"/>
+	<Script file="core\api.lua"/>
+	<Script file="modules\Panels\Panels.lua"/>
+	<Script file="modules\Buffs\Buffs.lua"/>
+	<Script file="modules\Chat\Chat.lua"/>
+	<Include file="modules\extra\load_extra.xml"/>
+	<Include file="modules\unitframes\load_unitframes.xml"/>
+	<Include file="modules\tooltip\load_tooltip.xml"/>
+	<Script file="modules\ActionBars\barpet.lua"/>
+	<Script file="medias\medias.lua"/>
+	<Script file="core\test.lua"/>
+	<Script file="modules\Maps\minimap.lua"/>
+	<Script file="modules\DataTexts\default_positions.lua"/>
+	<Script file="modules\Chat\install_chat.lua"/>
+</Ui>
