@@ -58,6 +58,22 @@ else
 	-- Right DataText
 	Panels.DataTextRight:SetPoint("BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -5, 4)
 	Panels.DataTextRight:SetBackdropColor(0,0,0,0)
+	
+	local LeftChatBG = CreateFrame("Frame", nil, DataTextLeft)
+	LeftChatBG:SetTemplate("Transparent")
+	LeftChatBG:Size(370 + 12, 177)
+	LeftChatBG:Point("BOTTOM", DataTextLeft, "BOTTOM", 0, -6)
+	LeftChatBG:SetFrameLevel(1)
+	LeftChatBG:SetFrameStrata("BACKGROUND")
+	LeftCharBG:SetAlpha(0)
+
+	local RightChatBG = CreateFrame("Frame", nil, DataTextRight)
+	RightChatBG:SetTemplate("Transparent")
+	RightChatBG:Size(370 + 12, 177)
+	RightChatBG:Point("BOTTOM", DataTextRight, "BOTTOM", 0, -6)
+	RightChatBG:SetFrameLevel(1)
+	RightChatBG:SetFrameStrata("BACKGROUND")
+	RightCharBG:SetAlpha(0)
 
 end
 
