@@ -19,11 +19,17 @@ hooksecurefunc(TukuiChat, "SetDefaultChatFramesPositions", function()
 		-- Set default chat frame position
 		if (ID == 1) then
 			Frame:ClearAllPoints()
-			Frame:SetPoint("BOTTOMLEFT", Panels.DataTextLeft, "BOTTOMLEFT", 8, 26)
+			Frame:Point( "BOTTOMLEFT", Panels.LeftChatBG, "BOTTOMLEFT", -5, 5 )
+			Frame:Point( "BOTTOMRIGHT", Panels.LeftChatBG, "BOTTOMRIGHT", -5, 5 )
+			Frame:Point( "TOPRIGHT", Panels.LeftChatBG, "TOPRIGHT", -5, -23.5 )
+			Frame:Point( "TOPLEFT", Panels.LeftChatBG, "TOPLEFT", 5, -23.5 )
 		elseif (C.Chat.LootFrame and ID == 4) then
 			if (not Frame.isDocked) then
-				Frame:ClearAllPoints()
-				Frame:SetPoint("BOTTOMRIGHT", Panels.DataTextRight, "BOTTOMRIGHT", -2, 26)
+			Frame:ClearAllPoints()
+			Frame:Point( "BOTTOMLEFT", Panels.RightChatBG, "BOTTOMLEFT", -5, 5 )
+			Frame:Point( "BOTTOMRIGHT", Panels.RightChatBG, "BOTTOMRIGHT", -5, 5 )
+			Frame:Point( "TOPRIGHT", Panels.RightChatBG, "TOPRIGHT", -5, -23.5 )
+			Frame:Point( "TOPLEFT", Panels.RightChatBG, "TOPLEFT", 5, -23.5 )
 			end
 		end
 		
