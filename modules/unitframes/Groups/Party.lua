@@ -12,22 +12,11 @@ hooksecurefunc(TukuiUnitFrames, "Party", function(Frame)
 	Frame.Shadow:Kill()
 
 	--------------------------------------------------
-	-- Portrait
-	--------------------------------------------------
-	Frame.Portrait.Backdrop:Size(24, 24)
-	Frame.Portrait.Backdrop:ClearAllPoints()
-	Frame.Portrait.Backdrop:SetPoint("BOTTOMRIGHT", Frame, "BOTTOMLEFT", -7, 2)
-
-	Frame.Portrait:Size(18,18)
-	Frame.Portrait:ClearAllPoints()
-	Frame.Portrait:SetPoint("CENTER", Frame.Portrait.Backdrop, "CENTER", 0, 0)
-	-- Frame.Portrait:SetAlpha(0)
-
-	--------------------------------------------------
 	-- Health
 	--------------------------------------------------
-	Frame.Health:Size( 220, 20 )
+	Frame.Health:Size(220, 20)
 	Frame.Health:CreateBackdrop("Default")
+	Frame.Health:SetFrameLevel(1)
 	Frame.Health.bg:SetVertexColor(.5, .5, .5)
 
 	--------------------------------------------------
@@ -51,20 +40,46 @@ hooksecurefunc(TukuiUnitFrames, "Party", function(Frame)
 	-- Buffs / Debuffs
 	--------------------------------------------------
 	Frame.Buffs:SetPoint("TOPLEFT", Frame, "BOTTOMLEFT", 0, -3)
-	Frame.Debuffs:Point("LEFT", Frame, "RIGHT", 6, 2)
+	Frame.Buffs:Hide()
+	
+	Frame.Debuffs:Point("TOPLEFT", Frame, "TOPRIGHT", 2, 1)
+	Frame.Debuffs.size = 22
+	Frame.Debuffs.spacing = 1
 
 	--------------------------------------------------
 	-- Leader Icon
 	--------------------------------------------------
 	Frame.Leader:ClearAllPoints()
-	Frame.Leader:SetPoint("TOPRIGHT", Frame, "TOPLEFT", 10, 14)
+	Frame.Leader:SetPoint("TOPRIGHT", Frame, "TOPLEFT", 18, 11)
 
 	--------------------------------------------------
 	-- Masterlooter Icon
 	--------------------------------------------------
 	Frame.MasterLooter:ClearAllPoints()
-	Frame.MasterLooter:SetPoint("TOPRIGHT", Frame, "TOPLEFT", 30, 16)
-
+	Frame.MasterLooter:SetPoint("TOPRIGHT", Frame, "TOPLEFT", 32, 11)
+	Frame.MasterLooter:Size(14, 14)
+	
+	---------------------------------------------------
+	-- Portrait
+	---------------------------------------------------
+	if C.Party.Portrait then
+		Frame.Portrait:ClearAllPoints()
+		Frame.Portrait:SetPoint("CENTER", Frame.Health, "CENTER", 0, 0)
+		Frame.Portrait:Size(162, 20)
+		Frame.Portrait.Backdrop:SetBackdrop(nil)
+		Frame.Portrait:SetAlpha(.2)
+		
+		Frame.Health:ClearAllPoints()
+		Frame.Health:SetPoint("TOPLEFT", 0, 0)
+		Frame.Health:SetPoint("TOPRIGHT")
+	end
+	
+	---------------------------------------------------
+	-- RaidIcon
+	---------------------------------------------------
+	Frame.RaidIcon:ClearAllPoints()
+	Frame.RaidIcon:SetSize(20, 20)
+	Frame.RaidIcon:SetPoint("CENTER", Frame, "CENTER", 0, 14)
 end)
 
 function TukuiUnitFrames:GetPartyFramesAttributes()

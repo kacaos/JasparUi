@@ -1,35 +1,41 @@
-local T, C, L, D = Tukui:unpack()
+local T, C, L = Tukui:unpack()
 local TukuiChat = T.Chat
 local Panels = T["Panels"]
+local Noop = function() end
+
+hooksecurefunc(TukuiChat, "StyleFrame", function(self, frame)
+	local Frame = frame
+	local FrameName = frame:GetName()
+	local TabText = _G[FrameName.."TabText"]
+	
+	if C.Chat.TabTextClassColor == true then
+		local color = RAID_CLASS_COLORS[select(2,UnitClass("player"))]
+		TabText:SetTextColor(color.r, color.g, color.b)
+	else
+		TabText:SetTextColor(unpack(C.Chat.TabText))
+	end
+	TabText.SetTextColor = Noop
+end)
 
 hooksecurefunc(TukuiChat, "SetDefaultChatFramesPositions", function()
-	if (not TukuiDataPerChar.Chat) then
-		TukuiDataPerChar.Chat = {}
+	if (not TukuiData[GetRealmName()][UnitName("Player")].Chat) then
+			TukuiData[GetRealmName()][UnitName("Player")].Chat = {}
 	end
 
-	local Width = T["Panels"].DataTextLeft:GetWidth()
+	local Width = 365
 
 	for i = 1, NUM_CHAT_WINDOWS do
 		local Frame = _G["ChatFrame"..i]
 		local ID = Frame:GetID()
-		
-		-- Set font size and chat frame size
-		Frame:Size(Width, 87)
-		
+			
 		-- Set default chat frame position
 		if (ID == 1) then
-			Frame:ClearAllPoints()
-			Frame:Point( "BOTTOMLEFT", Panels.LeftChatBG, "BOTTOMLEFT", -5, 5 )
-			Frame:Point( "BOTTOMRIGHT", Panels.LeftChatBG, "BOTTOMRIGHT", -5, 5 )
-			Frame:Point( "TOPRIGHT", Panels.LeftChatBG, "TOPRIGHT", -5, -23.5 )
-			Frame:Point( "TOPLEFT", Panels.LeftChatBG, "TOPLEFT", 5, -23.5 )
+    		Frame:ClearAllPoints()
+            Frame:SetPoint("BOTTOMLEFT", Panels.DataTextLeft, "BOTTOMLEFT", 8, 26)
 		elseif (C.Chat.LootFrame and ID == 4) then
 			if (not Frame.isDocked) then
-			Frame:ClearAllPoints()
-			Frame:Point( "BOTTOMLEFT", Panels.RightChatBG, "BOTTOMLEFT", -5, 5 )
-			Frame:Point( "BOTTOMRIGHT", Panels.RightChatBG, "BOTTOMRIGHT", -5, 5 )
-			Frame:Point( "TOPRIGHT", Panels.RightChatBG, "TOPRIGHT", -5, -23.5 )
-			Frame:Point( "TOPLEFT", Panels.RightChatBG, "TOPLEFT", 5, -23.5 )
+				Frame:ClearAllPoints()
+				Frame:SetPoint("BOTTOMRIGHT", Panels.DataTextRight, "BOTTOMRIGHT", -8, 26)
 			end
 		end
 		
@@ -54,7 +60,7 @@ hooksecurefunc(TukuiChat, "SetDefaultChatFramesPositions", function()
 		end
 		
 		local Anchor1, Parent, Anchor2, X, Y = Frame:GetPoint()
-		TukuiDataPerChar.Chat["Frame" .. i] = {Anchor1, Anchor2, X, Y, Width, 87}
+		TukuiData[GetRealmName()][UnitName("Player")].Chat["Frame" .. i] = {Anchor1, Anchor2, X, Y, Width, 87}
 	end
 end)
 
@@ -109,4 +115,33 @@ for i=1, NUM_CHAT_WINDOWS do
 
 	orig2[frame] = frame:GetScript("OnHyperlinkLeave")
 	frame:SetScript("OnHyperlinkLeave", OnHyperlinkLeave)
+end
+
+--------------------------------------------------------------------------------
+--	Play sound when your name is called in chat -- credit Hydra
+--------------------------------------------------------------------------------
+
+if C.Chat.Namealert == true then
+	local chatFind = CreateFrame("Frame")
+	chatFind:RegisterEvent("CHAT_MSG_GUILD")
+	chatFind:RegisterEvent("CHAT_MSG_BATTLEGROUND")
+	chatFind:RegisterEvent("CHAT_MSG_BATTLEGROUND_LEADER")
+	chatFind:RegisterEvent("CHAT_MSG_OFFICER")
+	chatFind:RegisterEvent("CHAT_MSG_PARTY")
+	chatFind:RegisterEvent("CHAT_MSG_PARTY_LEADER")
+	chatFind:RegisterEvent("CHAT_MSG_RAID")
+	chatFind:RegisterEvent("CHAT_MSG_RAID_LEADER")
+	chatFind:RegisterEvent("CHAT_MSG_SAY")
+	chatFind:RegisterEvent("CHAT_MSG_CHANNEL")
+
+	chatFind:SetScript("OnEvent", function(event, msg, sender)
+	sender = strlower(sender)
+			
+		if C.Chat.Namealert == true then
+			if strfind(sender, strlower(UnitName("player"))) then
+				PlaySoundFile(C.Medias.namealert)
+				return
+			end
+		end
+	end)
 end

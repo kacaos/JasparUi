@@ -30,3 +30,15 @@ hooksecurefunc(Tooltip, "SetColor", function()
 
 	end
 end)
+
+hooksecurefunc(Tooltip, "Enable", function()
+	HealthBar:ClearAllPoints()
+	HealthBar:Point("BOTTOMLEFT", HealthBar:GetParent(), "TOPLEFT", 0, 2)
+	HealthBar:Point("BOTTOMRIGHT", HealthBar:GetParent(), "TOPRIGHT", 0, 2)
+	HealthBar:Height(10)
+	
+	if C["Tooltips"].UnitHealthText then
+		HealthBar.Text:SetFont(HealthBar.Text:GetFont(), 12, "MONOCHROMEOUTLINE")
+		HealthBar.Text:Point("CENTER", HealthBar, "CENTER", 0, 2)
+	end
+end)

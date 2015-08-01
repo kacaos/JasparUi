@@ -2,6 +2,7 @@ T, C, L = Tukui:unpack()
 local TukuiUnitFrames = T["UnitFrames"]
 local Class = select(2, UnitClass("player"))
 local Movers = T["Movers"]
+T.myname = select(1, UnitName("player"))
 
 hooksecurefunc(TukuiUnitFrames, "Player", function(Player)
 	if (Class == "SHAMAN") then
@@ -9,20 +10,40 @@ hooksecurefunc(TukuiUnitFrames, "Player", function(Player)
 			Player.Totems:SetAlpha(0)
 		else
 			local TotemMover = CreateFrame("Frame", "Move Totembar", UIParent)
-			TotemMover:Size(194, 12)
-			TotemMover:SetPoint("BOTTOMLEFT", Player.Power, "TOPLEFT", -1, 1)
-			
-			Player.Totems:ClearAllPoints()
-			Player.Totems:Point("CENTER", TotemMover, "CENTER", 0, 0)
-			Player.Totems:Width(192)
-			
-			for i = 1, 4 do
-				if i == 1 then
-					Player.Totems[i]:Width(48)
-				else
-					Player.Totems[i]:Width(47)
+
+			if (T.myname == "Jaspâr") then
+				TotemMover:Size(202, 6)
+				TotemMover:SetPoint("CENTER", UIParent, "CENTER", 0, -98)
+				Player.Totems:SetWidth(200)
+				
+				for i = 1, 4 do
+					if i == 1 then
+						Player.Totems[i]:Width(50)
+					else
+						Player.Totems[i]:Width(49)
+					end
+				end
+			else
+				TotemMover:Size(194, 6)
+				TotemMover:SetPoint("CENTER", Player.Power, "CENTER", 0, 8)
+				Player.Totems:SetWidth(192)
+				
+				for i = 1, 4 do
+					if i == 1 then
+						Player.Totems[i]:Width(48)
+					else
+						Player.Totems[i]:Width(47)
+					end
 				end
 			end
+			
+
+			
+			Player.Totems:ClearAllPoints()
+			Player.Totems:SetHeight(6)
+			Player.Totems:Point("CENTER", TotemMover, "CENTER", 0, 0)
+			
+
 			
 			Movers:RegisterFrame(TotemMover)
 		end
@@ -33,8 +54,8 @@ hooksecurefunc(TukuiUnitFrames, "Player", function(Player)
 				---------------------------------------------------------
 				local sPowerBG = CreateFrame("Frame", "sPowerBG",Player.Totems)
 				sPowerBG:Height(10)
-				sPowerBG:Point("TOPLEFT", Player.Totems, "BOTTOMLEFT", -1, -2)
-				sPowerBG:Point("TOPRIGHT", Player.Totems, "BOTTOMRIGHT", 1, -2)
+				sPowerBG:Point("TOPLEFT", Player.Totems, "BOTTOMLEFT", -1, -3)
+				sPowerBG:Point("TOPRIGHT", Player.Totems, "BOTTOMRIGHT", 1, -3)
 				sPowerBG:SetTemplate("Transparent")
 
 				local sPowerStatus = CreateFrame("StatusBar", "sPowerStatus", sPowerBG)

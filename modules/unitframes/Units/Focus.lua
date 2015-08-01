@@ -35,6 +35,19 @@ hooksecurefunc(TukuiUnitFrames, "Focus", function(Focus)
 	Focus.Name:ClearAllPoints()
 	Focus.Name:SetParent(Focus.Health)
 	Focus.Name:Point("CENTER", Focus.Health, "CENTER", 0, 0)
+	
+	--------------------------------------------------
+	-- Buffs / Debuffs
+	--------------------------------------------------	
+	if C.UnitFrames.FocusAuras then
+			Focus.Debuffs:ClearAllPoints()
+			Focus.Debuffs:Point("LEFT", Focus, "RIGHT", 2, 2)
+			Focus.Debuffs.size = 28
+
+			Focus.Buffs:ClearAllPoints()
+			Focus.Buffs:Point("RIGHT", Focus, "LEFT", -2, 2)
+			Focus.Buffs.size = 28		
+	end
 
 	--------------------------------------------------
 	-- Castbar
@@ -42,7 +55,7 @@ hooksecurefunc(TukuiUnitFrames, "Focus", function(Focus)
 	if C.UnitFrames.CastBar == true then
 		Focus.Castbar:ClearAllPoints()
 		Focus.Castbar:SetPoint("TOPRIGHT", Focus, "BOTTOMRIGHT", -1, 0)
-		Focus.Castbar:Width(Focus.Health:GetWidth()-24)
+		Focus.Castbar:Width(Focus.Health:GetWidth()-19)
 		Focus.Castbar:Height(15)
 
 		Focus.Castbar.Time:ClearAllPoints()
@@ -50,8 +63,8 @@ hooksecurefunc(TukuiUnitFrames, "Focus", function(Focus)
 
 		if (C.UnitFrames.CastBarIcon) then
 			Focus.Castbar.Button:ClearAllPoints()
-			Focus.Castbar.Button:Point("RIGHT", Focus.Castbar, "LEFT", -5, 0)
-			Focus.Castbar.Button:Size(19)
+			Focus.Castbar.Button:Point("RIGHT", Focus.Castbar, "LEFT", -3, 0)
+			Focus.Castbar.Button:Size(15)
 		end
 
 		Focus.Castbar.Text:ClearAllPoints()

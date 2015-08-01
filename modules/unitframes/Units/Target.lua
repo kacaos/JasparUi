@@ -25,14 +25,9 @@ hooksecurefunc(TukuiUnitFrames, "Target", function(Target)
 	---------------------------------------------------	
 	--Power
 	---------------------------------------------------
-	if C.UnitFrames.Portrait == true then
-		Target.Power:Size(156, 2)
-	else
-		Target.Power:Size(192, 2)
-	end
 	Target.Power:ClearAllPoints()
+	Target.Power:Size(192, 2)
 	Target.Power:Point( "BOTTOMLEFT", Target.Health, "TOPLEFT", 0, 3 )
-	Target.Power:SetFrameLevel( Target.Health:GetFrameLevel() + 2 )
 	Target.Power:CreateBackdrop("Default")
 	Target.Power.Value:Point( "LEFT", Target.Health, "LEFT", 4, 0 )
 
@@ -41,18 +36,22 @@ hooksecurefunc(TukuiUnitFrames, "Target", function(Target)
 	---------------------------------------------------
 	Target.Name:ClearAllPoints()
 	Target.Name:SetParent(Target.Health)
-	Target:Tag(Target.Name, "[Tukui:GetNameColor][Tukui:NameMedium] [Tukui:DiffColor][level] [shortclassification]")
+	Target:Tag(Target.Name, "[Tukui:GetNameColor][Tukui:NameShort] [Tukui:DiffColor][level] [shortclassification]")
 
 	---------------------------------------------------
 	-- Debuffs / Buffs
 	---------------------------------------------------
-	Target.Debuffs:ClearAllPoints()
-	Target.Debuffs:Point("BOTTOMLEFT", Target.Buffs, "TOPLEFT", -2, 3)
-	Target.Debuffs:SetWidth(196)
+	if C.UnitFrames.TargetAuras then
+		Target.Debuffs:ClearAllPoints()
+		Target.Debuffs:Point("BOTTOMLEFT", Target.Buffs, "TOPLEFT", -2, 3)
+		Target.Debuffs:SetWidth(196)
+		Target.Debuffs.numRow = 2
+		Target.Debuffs.num = 14
 
-	Target.Buffs:SetWidth(196)	
-	Target.Buffs.numRow = 7
-	Target.Buffs.num = 7
+		Target.Buffs:SetWidth(196)	
+		Target.Buffs.numRow = 7
+		Target.Buffs.num = 7
+	end
 
 	---------------------------------------------------
 	-- Castbar
@@ -96,12 +95,10 @@ hooksecurefunc(TukuiUnitFrames, "Target", function(Target)
 	---------------------------------------------------
 	-- Combopoints
 	---------------------------------------------------
-	if C.ClassBars.Combo == false then
-		Target.ComboPointsBar:SetAlpha(0)
-	else
+	if C.UnitFrames.ComboBar == true then
 		local ComboMover = CreateFrame("Frame", "Move Combopoints", UIParent)
 		ComboMover:Size(194, 10)
-		ComboMover:SetPoint("BOTTOM", Target.Power, "TOP", -555, 15)
+		ComboMover:SetPoint("BOTTOM", Target.Power, "TOP", -636, 15)
 
 		Target.ComboPointsBar:ClearAllPoints()
 		Target.ComboPointsBar:Point("CENTER", ComboMover, "CENTER", 0, 0)
@@ -136,7 +133,15 @@ hooksecurefunc(TukuiUnitFrames, "Target", function(Target)
 	-- Portrait
 	---------------------------------------------------
 	if C.UnitFrames.Portrait then
-		Target.Portrait:Hide()
+		Target.Portrait:ClearAllPoints()
+		Target.Portrait:SetPoint("CENTER", Target.Health, "CENTER", 0, 0)
+		Target.Portrait:Size(192, 25)
+		Target.Portrait.Backdrop:SetBackdrop(nil)
+		Target.Portrait:SetAlpha(.2)
+		
+		Target.Health:ClearAllPoints()
+		Target.Health:SetPoint("TOPLEFT", 0, 0)
+		Target.Health:SetPoint("TOPRIGHT")
 	end
 end)
 

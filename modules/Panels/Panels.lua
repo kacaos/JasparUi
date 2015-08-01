@@ -18,18 +18,18 @@ end
 	
 -- Resize Left Datatext
 Panels.DataTextLeft:ClearAllPoints()
-Panels.DataTextLeft:Size(375, 15)
+Panels.DataTextLeft:Size(370, 15)
 
 -- Resize Right Datatext
 Panels.DataTextRight:ClearAllPoints()
-Panels.DataTextRight:Size(375, 15)
+Panels.DataTextRight:Size(370, 15)
 
 if C.Chat.Background == true then
 	
 	-- Left ChatBG
 	Panels.LeftChatBG:ClearAllPoints()
 	Panels.LeftChatBG:SetPoint("BOTTOMLEFT", UIParent, "BOTTOMLEFT", 5, 20)
-	Panels.LeftChatBG:Size(375, 100)
+	Panels.LeftChatBG:Size(370, 100)
 
 	-- Left Chattab
 	Panels.TabsBGLeft:StripTextures()
@@ -40,7 +40,7 @@ if C.Chat.Background == true then
 	-- Rigt ChatBG
 	Panels.RightChatBG:ClearAllPoints()
 	Panels.RightChatBG:SetPoint("BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -5, 20)
-	Panels.RightChatBG:Size(375, 100)
+	Panels.RightChatBG:Size(370, 100)
 
 	-- Right Chattab
 	Panels.TabsBGRight:StripTextures()
@@ -58,22 +58,6 @@ else
 	-- Right DataText
 	Panels.DataTextRight:SetPoint("BOTTOMRIGHT", UIParent, "BOTTOMRIGHT", -5, 4)
 	Panels.DataTextRight:SetBackdropColor(0,0,0,0)
-	
-	local LeftChatBG = CreateFrame("Frame", nil, DataTextLeft)
-	LeftChatBG:SetTemplate("Transparent")
-	LeftChatBG:Size(370 + 12, 177)
-	LeftChatBG:Point("BOTTOM", DataTextLeft, "BOTTOM", 0, -6)
-	LeftChatBG:SetFrameLevel(1)
-	LeftChatBG:SetFrameStrata("BACKGROUND")
-	LeftCharBG:SetAlpha(0)
-
-	local RightChatBG = CreateFrame("Frame", nil, DataTextRight)
-	RightChatBG:SetTemplate("Transparent")
-	RightChatBG:Size(370 + 12, 177)
-	RightChatBG:Point("BOTTOM", DataTextRight, "BOTTOM", 0, -6)
-	RightChatBG:SetFrameLevel(1)
-	RightChatBG:SetFrameStrata("BACKGROUND")
-	RightCharBG:SetAlpha(0)
 
 end
 

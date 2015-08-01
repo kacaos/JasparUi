@@ -9,8 +9,8 @@ end
 	
 hooksecurefunc(Miscellaneous.Experience, "Create", function()
 	--Remove rightxpbar
-	Miscellaneous.Experience.XPBar2:Hide()
-	Miscellaneous.Experience.RestedBar2:Hide()
+	Miscellaneous.Experience.XPBar2:Kill()
+	Miscellaneous.Experience.RestedBar2:Kill()
 	
 	-- Move and resize leftxpbar
 	Miscellaneous.Experience.XPBar1:ClearAllPoints()

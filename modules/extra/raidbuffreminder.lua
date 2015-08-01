@@ -4,70 +4,112 @@ function JasparUI:AddRBReminder()
 if not C.Misc.BuffReminder == true then return end
 
 local function SetCasterOnlyBuffs()
-	Spell1Buff = {
-		1459, -- Arcane Brilliance
-		61316, -- Dalaran Brilliance
-		109773, -- Dark Intent
+	Spell1Buff = { --Stats
+		1126, 					-- Mark of the Wild
+		115921,					-- Legacy of the Emperor
+		116781,					-- Legacy of the White Tiger
+		20217,					-- Blessing of Kings
+		159988,					-- Bark of the Wild (Hunterpet)
+		160017,					-- Blessing of Kongs (Hunterpet)
+		90363,					-- Embrace of the Shale Spider (Hunterpet)
+		160077,					-- Strength of the Earth (Hunterpet)
 	}
-	Spell2Buff = {
-		--24907, -- Moonkin Aura
-		49868, -- Mind Quickening
+	Spell2Buff = { -- Stamina
+		21562,					-- Power Word: Fortitude
+		166928,					-- Blood Pact
+		469,					-- Commanding Shout
+		50256,					-- Invigorating Roar (Hunterpet)
+		160014,					-- Sturdiness (Hunterpet)
+		160003,					-- Savage Vigor (Hunterpet)
+		90364,					-- Qiraji Fortitude (Hunterpet)
 	}
-	Spell3Buff = {
-		1126, -- Mark of the Wild
-		20217, -- Blessing of Kings
-		115921, -- Legacy of the Emperor
+	Spell3Buff = { -- Attack Power
+		57330,					-- Horn of Winter
+		19506,					-- Trueshot Aura
+		6673,					-- Battle Shout
 	}
-	Spell4Buff = {
-		469, -- Commanding Shout
-		21562, -- Power Word: Fortitude
-		166928, -- Blood Pact
-		90364, -- Qiraji Fortitude
+	Spell4Buff = { -- Spell Power
+		1459,					-- Arcane Brilliance
+		61316,					-- Dalaran Brilliance
+		109773,					-- Dark Intent
+		128433,					-- Serpent's Cunning (Hunterpet)
+		90364,					-- Qiraji Fortitude (Hunterpet)
+		126309,					-- Still Water (Hunterpet)
 	}
-	Spell5Buff = {
-		19740, -- Blessing of Might
-		116956, -- Grace of Air
+	Spell5Buff = { -- Mastery
+		155522,					-- Power of the Grave
+		24907,					-- Moonkin Aura
+		19740,					-- Blessing of Might
+		116956,					-- Grace of Air
+		93435,					-- Roar of Courage (Hunterpet)
+		160039,					-- Keen Senses (Hunterpet)
+		128997,					-- Spirit Beast Blessing (Hunterpet)
+		160073,					-- Plainswalking (Hunterpet)
 	}
-	Spell6Buff = {
-		1459, -- Arcane Brilliance
-		24932, -- Leader of the Pack
-		61316, -- Dalaran Brilliance
-		116781, -- Legacy of the White Tiger
+	Spell6Buff = { -- Haste
+		55510,					-- Unholy Aura
+		49868,					-- Mind Quickening
+		113742,					-- Swiftblade's Cunning
+		116956,					-- Grace of Air
+		128432,					-- Crackling Howl (Hunterpet)
+		160003,					-- Savage Vigor (Hunterpet)
+		135678,					-- Energizing Spores (Hunterpet)
+		160074,					-- Speed of the Swarm (Hunterpet)
 	}
 end
 
 local function SetBuffs()
-	Spell1Buff = {
-		55610, -- Unholy Aura
-		113742, -- Swiftblade's Cunning
-		128432, -- Cackling Howl
+	Spell1Buff = { --Stats
+		1126, 					-- Mark of the Wild
+		115921,					-- Legacy of the Emperor
+		116781,					-- Legacy of the White Tiger
+		20217,					-- Blessing of Kings
+		159988,					-- Bark of the Wild (Hunterpet)
+		160017,					-- Blessing of Kongs (Hunterpet)
+		90363,					-- Embrace of the Shale Spider (Hunterpet)
+		160077,					-- Strength of the Earth (Hunterpet)
 	}
-	Spell2Buff = {
-		1459, -- Arcane Brilliance
-		24932, -- Leader of the Pack
-		61316, -- Dalaran Brilliance
-		109773, -- Dark Intent
-		116781, -- Legacy of the White Tiger
+	Spell2Buff = { -- Stamina
+		21562,					-- Power Word: Fortitude
+		166928,					-- Blood Pact
+		469,					-- Commanding Shout
+		50256,					-- Invigorating Roar (Hunterpet)
+		160014,					-- Sturdiness (Hunterpet)
+		160003,					-- Savage Vigor (Hunterpet)
+		90364,					-- Qiraji Fortitude (Hunterpet)
 	}
-	Spell3Buff = {
-		1126, -- Mark of the Wild
-		20217, -- Blessing of Kings
-		115921, -- Legacy of the Emperor
+	Spell3Buff = { -- Attack Power
+		57330,					-- Horn of Winter
+		19506,					-- Trueshot Aura
+		6673,					-- Battle Shout
 	}
-	Spell4Buff = {
-		469, -- Commanding Shout
-		21562, -- Power Word: Fortitude
-		166928,	-- Blood Pact
-		90364, -- Qiraji Fortitude
+	Spell4Buff = { -- Spell Power
+		1459,					-- Arcane Brilliance
+		61316,					-- Dalaran Brilliance
+		109773,					-- Dark Intent
+		128433,					-- Serpent's Cunning (Hunterpet)
+		90364,					-- Qiraji Fortitude (Hunterpet)
+		126309,					-- Still Water (Hunterpet)
 	}
-	Spell5Buff = {
-		19740, -- Blessing of Might
-		116956, -- Grace of Air
+	Spell5Buff = { -- Mastery
+		155522,					-- Power of the Grave
+		24907,					-- Moonkin Aura
+		19740,					-- Blessing of Might
+		116956,					-- Grace of Air
+		93435,					-- Roar of Courage (Hunterpet)
+		160039,					-- Keen Senses (Hunterpet)
+		128997,					-- Spirit Beast Blessing (Hunterpet)
+		160073,					-- Plainswalking (Hunterpet)
 	}
-	Spell6Buff = {
-		6673, -- Battle Shout
-		19506, -- Trueshot Aura
-		57330, -- Horn of Winter
+	Spell6Buff = { -- Haste
+		55510,					-- Unholy Aura
+		49868,					-- Mind Quickening
+		113742,					-- Swiftblade's Cunning
+		116956,					-- Grace of Air
+		128432,					-- Crackling Howl (Hunterpet)
+		160003,					-- Savage Vigor (Hunterpet)
+		135678,					-- Energizing Spores (Hunterpet)
+		160074,					-- Speed of the Swarm (Hunterpet)
 	}
 end
 
@@ -176,8 +218,8 @@ local RBRWidth = ((T.Maps.Minimap:GetWidth()) /6) + 3
 
 local raidbuff_reminder = CreateFrame('Frame', 'RaidBuffReminder', Minimap)
 raidbuff_reminder:Width(RBRWidth)
-raidbuff_reminder:Point('TOPLEFT', T.Maps.Minimap, 'TOPRIGHT', 2, 3)
-raidbuff_reminder:Point('BOTTOMLEFT', T.Maps.Minimap, 'BOTTOMRIGHT', 2, -3)
+raidbuff_reminder:Point('TOPLEFT', T.Maps.Minimap, 'TOPRIGHT', 0, 3)
+raidbuff_reminder:Point('BOTTOMLEFT', T.Maps.Minimap, 'BOTTOMRIGHT', 0, -3)
 
 raidbuff_reminder:RegisterEvent("ACTIVE_TALENT_GROUP_CHANGED")
 raidbuff_reminder:RegisterEvent("UNIT_INVENTORY_CHANGED")

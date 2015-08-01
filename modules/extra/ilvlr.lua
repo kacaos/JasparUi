@@ -1,4 +1,4 @@
-local T, C, L, D = Tukui:unpack()
+local T, C, L = Tukui:unpack()
 
 --[[
 	Credits for this script goes to JerichoHM
@@ -45,9 +45,10 @@ local iEqAvg, iAvg
 local function CreateButtonsText(frame)
 	for _, slot in pairs(slots) do
 		local button = _G[frame .. slot]
+		local Font = T.GetFont(C["DataTexts"].Font)
 
 		button.text = button:CreateFontString(nil, "ARTWORK")
-		button.text:SetFont(C["Medias"].PixelFont, 12, "MONOCHROMEOUTLINE")
+		button.text:SetFontObject(Font)
 
 		if slot == "HeadSlot" or slot == "NeckSlot" or slot == "ShoulderSlot" or slot == "BackSlot" or slot == "ChestSlot" or slot == "WristSlot" or slot == "ShirtSlot" or slot == "TabardSlot" then
 			button.text:SetPoint("CENTER", button, "CENTER", 39, 0)

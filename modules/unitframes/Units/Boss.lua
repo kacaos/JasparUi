@@ -16,6 +16,9 @@ hooksecurefunc(TukuiUnitFrames, "Boss", function(Boss)
 	Boss.Health:Size( 233, 23 )
 	Boss.Health:CreateBackdrop("Default")
 	Boss.Health.bg:SetVertexColor(.5, .5, .5)
+	
+	Boss.Health.Value:ClearAllPoints()
+	Boss.Health.Value:SetPoint("TOPLEFT", Boss.Health, "TOPLEFT", 3, 1)
 
 	--------------------------------------------------
 	--Power
@@ -27,11 +30,22 @@ hooksecurefunc(TukuiUnitFrames, "Boss", function(Boss)
 	Boss.Power:SetFrameLevel( Boss.Health:GetFrameLevel() + 2 )
 	Boss.Power:CreateBackdrop("Default")
 	
+	Boss.Power.Value:ClearAllPoints()
+	Boss.Power.Value:SetPoint("TOPRIGHT", Boss.Health, "TOPRIGHT", -3, 1)
+
+	--------------------------------------------------
+	--Name
+	--------------------------------------------------
+	Boss.Name:ClearAllPoints()
+	Boss.Name:SetPoint("BOTTOM", Boss.Health, "BOTTOM", 0, 0)
+	
 	--------------------------------------------------
 	-- Buffs / Debuffs
 	--------------------------------------------------
-	Boss.Buffs.size = 31
-	Boss.Debuffs.size = 31
+	if C.UnitFrames.BossAuras then
+		Boss.Buffs.size = 31
+		Boss.Debuffs.size = 31
+	end
 
 	--------------------------------------------------
 	-- Castbar

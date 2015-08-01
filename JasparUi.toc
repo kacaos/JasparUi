@@ -1,13 +1,13 @@
 ## Interface: 60000
 ## Title: |cff1784d1JasparUi|r
 ## Notes: Edited version of Tukui.
-## Author: Tukz, Nisha, Jaspar
-## Version: 1.0.0
-## SavedVariables: TukuiData
-## SavedVariablesPerCharacter: TukuiSaved, ClickCast
+## Author: Jâspar (aka Kacaos)
+## Credits: Tukz, Nisha, Hydra, Azilroka, Sinaris, and some other ppl from Tukui-Team :)
+## Version: 1.0.8
+## SavedVariablesPerCharacter: ClickCast
 ## RequiredDeps: Tukui
 ## OptionalDeps: Blizzard_CombatText, Clique, DBM-Core, Omen, Recount, Skada, TinyDPS
-## X-oUF: oUFTukui
+## X-oUF: TukuiUnitFrameFramework
 ## Dependencies: Tukui
 
 jasparui.xml

@@ -358,4 +358,25 @@ if IsAddOnLoaded("Aurora") then
 	F.CreateSD(SpellBinder)
 	F.ReskinClose(SpellBinderCloseButton)
 	F.ReskinScroll(SpellBinderScrollFrameSpellListScrollBar)
+	
+elseif IsAddOnLoaded("AddOnSkins") then
+	SpellBinder:StripTextures()
+	SpellBinderInset:StripTextures()
+
+	SpellBinder:CreateBackdrop("Transparent")
+
+	SpellBinder.OpenButton:StripTextures()
+	SpellBinder.OpenButton:SetNormalTexture("Interface\\ICONS\\INV_Mushroom_08")
+	SpellBinder.OpenButton:GetNormalTexture():ClearAllPoints()
+	SpellBinder.OpenButton:GetNormalTexture():Point("TOPLEFT", 2, -2)
+	SpellBinder.OpenButton:GetNormalTexture():Point("BOTTOMRIGHT", -2, 2)
+	SpellBinder.OpenButton:GetNormalTexture():SetTexCoord(0.1, 0.9, 0.1, 0.9)
+
+	SpellBinder.OpenButton:CreateBackdrop("Default")
+	SpellBinder.OpenButton:StyleButton()
+
+	SpellBinderScrollFrameSpellList:StripTextures()
+	SpellBinderScrollFrameSpellList:SetTemplate("Overlay")
+	T.SkinCloseButton(SpellBinderCloseButton)
+	T.SkinScrollBar(SpellBinderScrollFrameSpellListScrollBar)
 end

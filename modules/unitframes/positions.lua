@@ -13,7 +13,6 @@ hooksecurefunc(TukuiUnitFrames, "CreateUnits", function()
 	local FocusTarget = TukuiUnitFrames.Units.FocusTarget
 	local Party = TukuiUnitFrames.Headers.Party
 	local Raid = TukuiUnitFrames.Headers.Raid
-	local RaidPet = TukuiUnitFrames.Headers.RaidPet
 	local Boss = TukuiUnitFrames.Units.Boss[1]
 	local Arena = TukuiUnitFrames.Units.Arena[1]
 	
@@ -35,21 +34,17 @@ hooksecurefunc(TukuiUnitFrames, "CreateUnits", function()
 	Target:SetPoint("BOTTOMRIGHT", TukuiUnitFrames.Anchor, "TOPRIGHT", 30, 150)
 	
 	ToT:ClearAllPoints()	
-	if C.UnitFrames.Portrait == true then
-		ToT:SetPoint("TOPRIGHT", Target, "BOTTOMRIGHT", -37, -3)
-	else
-		ToT:SetPoint("TOPRIGHT", Target, "BOTTOMRIGHT", 0, -3)
-	end
+	ToT:SetPoint("TOPRIGHT", Target, "BOTTOMRIGHT", 0, -3)
 	
 	Pet:ClearAllPoints()	
-	if C.UnitFrames.Portrait == true then
-		Pet:SetPoint("TOPLEFT", Player, "BOTTOMLEFT", 37, -3)
-	else
-		Pet:SetPoint("TOPLEFT", Player, "BOTTOMLEFT", 0, -3)
-	end
+	Pet:SetPoint("TOPLEFT", Player, "BOTTOMLEFT", 0, -3)
 	
 	Raid:ClearAllPoints()	
-	Raid:SetPoint("BOTTOMLEFT", Panels.LeftChatBG, "TOPLEFT", 0, 15)
+	if C.Raid.MaxUnitPerColumn == 1 then
+		Raid:SetPoint("BOTTOMLEFT", Panels.LeftChatBG, "TOPLEFT", 0, 150)
+	else	
+		Raid:SetPoint("BOTTOMLEFT", Panels.LeftChatBG, "TOPLEFT", 0, 15)
+	end
 	
 	Focus:ClearAllPoints()	
 	Focus:SetPoint("CENTER", UIParent, "CENTER", -400, 0)
@@ -58,8 +53,5 @@ hooksecurefunc(TukuiUnitFrames, "CreateUnits", function()
 	Boss:SetPoint("CENTER", UIParent, "CENTER", 550, -150)
 	
 	Arena:ClearAllPoints()	
-	Arena:SetPoint("CENTER", UIParent, "CENTER", 550, -150)
-
-	RaidPet:ClearAllPoints()
-	RaidPet:SetPoint("BOTTOM", UIParent, "BOTTOM", 0, -2000)
+	Arena:SetPoint("CENTER", UIParent, "CENTER", -550, -150)
 end)

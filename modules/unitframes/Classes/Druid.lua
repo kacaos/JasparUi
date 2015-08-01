@@ -22,7 +22,6 @@ hooksecurefunc(TukuiUnitFrames, "Player", function(Player)
 			
 			Player.EclipseBar.Text:ClearAllPoints()
 			Player.EclipseBar.Text:Point("BOTTOM", Player.EclipseBar, "TOP", 0, 1)
-			Player.EclipseBar.Text:Hide()
 			
 			Player.EclipseBar.SolarBar:Size(192, 8)
 			

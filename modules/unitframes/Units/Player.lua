@@ -28,12 +28,8 @@ hooksecurefunc(TukuiUnitFrames, "Player", function(Player)
 	---------------------------------------------------	
 	--Power
 	---------------------------------------------------
-	if C.UnitFrames.Portrait == true then
-		Player.Power:Size(156, 2)
-	else
-		Player.Power:Size(192, 2)
-	end
 	Player.Power:ClearAllPoints()
+	Player.Power:Size(192, 2)
 	Player.Power:Point( "BOTTOMLEFT", Player.Health, "TOPLEFT", 0, 3 )
 	Player.Power:CreateBackdrop("Default")
 	Player.Power.Value:Point( "LEFT", Player.Health, "LEFT", 4, 0)
@@ -100,6 +96,14 @@ hooksecurefunc(TukuiUnitFrames, "Player", function(Player)
 	-- Portrait
 	---------------------------------------------------
 	if C.UnitFrames.Portrait then
-		Player.Portrait:Hide()
+		Player.Portrait:ClearAllPoints()
+		Player.Portrait:SetPoint("CENTER", Player.Health, "CENTER", 0, 0)
+		Player.Portrait:Size(192, 25)
+		Player.Portrait.Backdrop:SetBackdrop(nil)
+		Player.Portrait:SetAlpha(.2)
+		
+		Player.Health:ClearAllPoints()
+		Player.Health:SetPoint("TOPLEFT", 0, 0)
+		Player.Health:SetPoint("TOPRIGHT")
 	end
 end)

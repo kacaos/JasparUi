@@ -8,4 +8,6 @@
 	<Script file="reputationbar.lua"/>
 	<Script file="xpbar.lua"/>
 	<Script file="click2cast.lua"/>
+	<Script file="autoscreen.lua"/>
+	<Script file="invite.lua"/>
 </Ui>

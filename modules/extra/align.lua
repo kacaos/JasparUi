@@ -1,4 +1,4 @@
-local T, C, L, D = Tukui:unpack()
+local T, C, L = Tukui:unpack()
 
 SLASH_ALI1 = "/ali"
 SlashCmdList["ALI"] = function( gridsize )

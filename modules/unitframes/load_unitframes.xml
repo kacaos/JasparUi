@@ -2,7 +2,6 @@
 	<Include file="Classes\load_classes.xml"/>
 	<Script file="Plugins\CastbarTicks.lua"/>
 	<Script file="Plugins\ClassIcons.lua"/>
-	<Script file="Plugins\oUF_Vengeance.lua"/>
 	<Script file="functions.lua"/>
 	<Script file="Units\Player.lua"/>
 	<Script file="Units\Target.lua"/>

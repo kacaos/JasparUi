@@ -30,6 +30,23 @@ hooksecurefunc(TukuiUnitFrames, "Player", function(Player)
 			
 			Movers:RegisterFrame(PriestMover)
 		end
+		
+		if C.UnitFrames.SerendipityBar then
+			Player.SerendipityBar:ClearAllPoints()
+			Player.SerendipityBar:Point("BOTTOM", Player.Power, "TOP", 0, 25)
+			Player.SerendipityBar:Width(192)
+			
+			for i = 1, 2 do
+				if i == 1 then
+					Player.SerendipityBar[i]:Width(192/2)
+					Player.SerendipityBar[i]:Point("LEFT", Player.SerendipityBar, "LEFT", 0, 0)
+				else
+					Player.SerendipityBar[i]:Width(192/2)
+					Player.SerendipityBar[i]:Point("RIGHT", Player.SerendipityBar, "RIGHT", 0, 0)
+				end
+			end
+		end
+				
 
 			if C.ClassBars.Power == true then
 				---------------------------------------------------------
@@ -62,5 +79,26 @@ hooksecurefunc(TukuiUnitFrames, "Player", function(Player)
 				sPowerBG:RegisterEvent("PLAYER_ENTERING_WORLD")
 				sPowerBG:RegisterEvent("UNIT_DISPLAYPOWER")	
 			end
+	end
+end)
+
+hooksecurefunc(TukuiUnitFrames, "UpdatePriestClassBars", function(self)
+	local Frame = self:GetParent()
+	local Serendipity = Frame.SerendipityBar
+	local Totems = Frame.Totems
+	local Shadow = Frame.Shadow
+
+	if (Serendipity and Serendipity:IsShown()) and (Totems and Totems:IsShown()) then
+		Shadow:Point("TOPLEFT", -4, 21)
+
+		Serendipity:ClearAllPoints()
+		Serendipity:Point("BOTTOMLEFT", Frame, "TOPLEFT", 0, 25)
+	elseif (Serendipity and Serendipity:IsShown()) or (Totems and Totems:IsShown()) then
+		Shadow:Point("TOPLEFT", -4, 12)
+
+		Serendipity:ClearAllPoints()
+		Serendipity:Point("BOTTOMLEFT", Frame, "TOPLEFT", 0, 25)
+	else
+		Shadow:Point("TOPLEFT", -4, 4)
 	end
 end)

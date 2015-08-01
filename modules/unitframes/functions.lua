@@ -53,6 +53,7 @@ function TukuiUnitFrames:PostCreateAura(button)
 	button.cd:SetFrameLevel(button:GetFrameLevel() + 1)
 	button.cd:ClearAllPoints()
 	button.cd:SetInside()
+	button.cd:SetHideCountdownNumbers(true)
 
 	button.icon:SetInside()
 	button.icon:SetTexCoord(unpack(T.IconCoord))
@@ -60,7 +61,7 @@ function TukuiUnitFrames:PostCreateAura(button)
 
 	button.count:Point("BOTTOMRIGHT", 3, 3)
 	button.count:SetJustifyH("RIGHT")
-	button.count:SetFont(C.Medias.Font, 9, "THICKOUTLINE")
+	button.count:SetFontObject(Font)
 	button.count:SetTextColor(0.84, 0.75, 0.65)
 
 	button.OverlayFrame = CreateFrame("Frame", nil, button, nil)
@@ -77,3 +78,22 @@ function TukuiUnitFrames:PostCreateAura(button)
 	button.Animation.FadeOut:SetDuration(.6)
 	button.Animation.FadeOut:SetSmoothing("IN_OUT")
 end
+
+-- Set color of raidroleicons
+hooksecurefunc(TukuiUnitFrames, "SetGridGroupRole", function(self)
+	local LFDRole = self.LFDRole
+	local Role = UnitGroupRolesAssigned(self.unit)
+	
+	if Role == "TANK" then
+		LFDRole:SetTexture(67/255, 110/255, 238/255)
+		LFDRole:Show()
+	elseif Role == "HEALER" then
+		LFDRole:SetTexture(130/255,  255/255, 130/255)
+		LFDRole:Show()
+	elseif Role == "DAMAGER" then
+		LFDRole:SetTexture(176/255, 23/255, 31/255)
+		LFDRole:Show()
+	else
+		LFDRole:Hide()
+	end
+end)

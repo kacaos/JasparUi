@@ -21,13 +21,12 @@ hooksecurefunc(TukuiUnitFrames, "Player", function(Player)
 				WarlockMover:SetPoint("CENTER", Player.Power, "CENTER", 0, 6)
 				Player.WarlockSpecBars:SetWidth(192)
 			end
-
+		
+			Player.Totems:SetAlpha(0) -- Dunno why the sometimes appear. Seems to be a bug ?!
 			
 			Player.WarlockSpecBars:ClearAllPoints()
 			Player.WarlockSpecBars:Point("CENTER", WarlockMover, "CENTER", 0, 0)
 			Player.WarlockSpecBars:SetHeight(4)
-			
-			Player. Totems:Hide()
 			
 			for i = 1, 4 do
 				Player.WarlockSpecBars[i]:Height(4)

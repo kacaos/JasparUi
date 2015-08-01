@@ -28,6 +28,10 @@ local Misc = {
 			["Name"] = "Enable Errorfilter",
 			["Desc"] = "Filters out messages from the UIErrorsFrame",
 	},
+	["autoscreen"] = {
+			["Name"] = "Enable automatic screenshot",
+			["Desc"] = "Screenshot when getting an achievement",
+	},
 }
 
 local ClassBars = {
@@ -66,10 +70,6 @@ local ClassBars = {
 	["Warrior"] = {
 			["Name"] = "Enable Warrior BannerCD",
 			["Desc"] = "Enable Warrior BannerCD",
-	},
-	["Combo"] = {
-			["Name"] = "Enable Combopoints Rogue/Druid(cat)",
-			["Desc"] = "Enable Combopoints Rogue/Druid(cat)",
 	},
 	["Power"] = {
 			["Name"] = "Enable extra bigger powerbar (Need enabled classbar)",
@@ -131,7 +131,15 @@ local General = {
 	},
 }
 
+local Invite = {
+	["autoaccept"] = {
+			["Name"] = "Enable autoaccept Party/Raidinvites",
+			["Desc"] = "Enable autoaccept Party/Raidinvites",
+	},
+}
+
 TukuiConfig.enUS["Misc"] = Misc
 TukuiConfig.enUS["ClassBars"] = ClassBars
 TukuiConfig.enUS["CastBars"] = CastBars
 TukuiConfig.enUS["General"] = General
+TukuiConfig.enUS["Invite"] = Invite

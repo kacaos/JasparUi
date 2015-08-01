@@ -9,7 +9,7 @@ local Minimap = T["Maps"].Minimap
 hooksecurefunc(Minimap, "AddMinimapDataTexts", function()
 -- Set the Left Datatextpanel (Bottom of Minimap for Clock)
 Panels.MinimapDataTextOne:ClearAllPoints()
-Panels.MinimapDataTextOne:SetPoint("CENTER", T.Maps.Minimap, "BOTTOM", 0, 10)
+Panels.MinimapDataTextOne:SetPoint("CENTER", T.Maps.Minimap, "BOTTOM", 0, 7)
 Panels.MinimapDataTextOne:StripTextures()
 Panels.MinimapDataTextOne:Size(35, 13)
 
@@ -30,7 +30,7 @@ end)
 hooksecurefunc(Minimap, "PositionMinimap", function()
 	Minimap:ClearAllPoints()
 	if C.Misc.BuffReminder == true then
-		Minimap:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", -30, -5)
+		Minimap:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", -28, -5)
 	else
 		Minimap:SetPoint("TOPRIGHT", UIParent, "TOPRIGHT", -5, -5)
 	end
